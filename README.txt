@@ -3,6 +3,8 @@ LogiLCD.net
 Version: 0.1
 Webpage: http://www.drywa.me
 Platforms: Windows Vista SP2 ( x86 and x64 ), Windows 7 SP1 ( x86 and x64 ), Windows 8 ( x86 and x64 )
+Environment: C# with .NET 4.5 under Visual Studio 2012 ( Update 2 )
+Status: Init, Shutdown and Button checking is working. The rest will follow soon. x64 is not working right now.
 
 Release Notes:
 ----------------------------------------
@@ -10,7 +12,7 @@ LogiLCD.net is a .NET wrapper for the Logitech Gaming LCD SDK V1.01. It is writt
 
 Tested Devices:
 ----------------------------------------
-G19 ( TESTED )
+G19 ( UNTESTED )
 G510 ( UNTESTED )
 G13 ( UNTESTED )
 G15 v1 ( UNTESTED )
