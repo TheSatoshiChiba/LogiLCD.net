@@ -8,7 +8,7 @@ Status: Init, Shutdown and Button checking is working. The rest will follow soon
 
 Release Notes:
 ----------------------------------------
-LogiLCD.net is a .NET wrapper for the Logitech Gaming LCD SDK V1.01. It is written in C# with .NET 4.5 and supports the x86 and x64 version of the native library. It behaves exaclty the same as the native SDK except that the defines have been packed in simple enumerations and all methods have been packed into one class named LogiLcd. The main namespace to use is dd.logilcd. For an example to see how to use the Library simply take a look into the sample Application.
+LogiLCD.net is a .NET wrapper for the Logitech Gaming LCD SDK V1.01. It is written in C# with .NET 4.5 and supports the x86 and x64 version of the native library. It behaves exaclty the same as the native SDK except that the defines have been packed in simple enumerations and all methods have been packed into one class named LogiLcd. Just reference the LogiLcd Assembly and you are good to go. The main namespace to use is dd.logilcd. For an example to see how to use the Library simply take a look into the sample Application.
 
 Tested Devices:
 ----------------------------------------
@@ -18,7 +18,7 @@ G13 ( UNTESTED )
 G15 v1 ( UNTESTED )
 G15 v2 ( UNTESTED )
 
-If you have tested the Wrapper with one of the untested deviced please e-mail me your results.
+If you have tested the wrapper with one of the untested devices please e-mail me your results.
 
 Clarification:
 ----------------------------------------
