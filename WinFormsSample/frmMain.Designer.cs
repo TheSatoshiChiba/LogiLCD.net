@@ -51,6 +51,11 @@
 			this.dlgColor = new System.Windows.Forms.ColorDialog();
 			this.lblColor = new System.Windows.Forms.Label();
 			this.btnColor = new System.Windows.Forms.Button();
+			this.picImage = new System.Windows.Forms.PictureBox();
+			this.btnImageLoad = new System.Windows.Forms.Button();
+			this.btnImageSet = new System.Windows.Forms.Button();
+			this.dlgFile = new System.Windows.Forms.OpenFileDialog();
+			((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// timerUpdate
@@ -325,11 +330,50 @@
 			this.btnColor.UseVisualStyleBackColor = true;
 			this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
 			// 
+			// picImage
+			// 
+			this.picImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.picImage.Location = new System.Drawing.Point(254, 332);
+			this.picImage.Name = "picImage";
+			this.picImage.Size = new System.Drawing.Size(206, 89);
+			this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picImage.TabIndex = 25;
+			this.picImage.TabStop = false;
+			// 
+			// btnImageLoad
+			// 
+			this.btnImageLoad.Location = new System.Drawing.Point(255, 427);
+			this.btnImageLoad.Name = "btnImageLoad";
+			this.btnImageLoad.Size = new System.Drawing.Size(100, 23);
+			this.btnImageLoad.TabIndex = 26;
+			this.btnImageLoad.Text = "Load Image";
+			this.btnImageLoad.UseVisualStyleBackColor = true;
+			this.btnImageLoad.Click += new System.EventHandler(this.btnImageLoad_Click);
+			// 
+			// btnImageSet
+			// 
+			this.btnImageSet.Location = new System.Drawing.Point(360, 427);
+			this.btnImageSet.Name = "btnImageSet";
+			this.btnImageSet.Size = new System.Drawing.Size(100, 23);
+			this.btnImageSet.TabIndex = 27;
+			this.btnImageSet.Text = "Set Image";
+			this.btnImageSet.UseVisualStyleBackColor = true;
+			this.btnImageSet.Click += new System.EventHandler(this.btnImageSet_Click);
+			// 
+			// dlgFile
+			// 
+			this.dlgFile.DefaultExt = "bmp";
+			this.dlgFile.Filter = "bmp files (*.bmp)|*.bmp|png files (*.png)|*.png|jpg files (*,jpg)|*.jpg";
+			this.dlgFile.Title = "Load Image";
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(472, 471);
+			this.ClientSize = new System.Drawing.Size(472, 460);
+			this.Controls.Add(this.btnImageSet);
+			this.Controls.Add(this.btnImageLoad);
+			this.Controls.Add(this.picImage);
 			this.Controls.Add(this.btnColor);
 			this.Controls.Add(this.lblColor);
 			this.Controls.Add(this.label3);
@@ -360,6 +404,7 @@
 			this.Name = "frmMain";
 			this.Text = "LogiLCD.net Sample";
 			this.Load += new System.EventHandler(this.frmMain_Load);
+			((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -394,6 +439,10 @@
 		private System.Windows.Forms.ColorDialog dlgColor;
 		private System.Windows.Forms.Label lblColor;
 		private System.Windows.Forms.Button btnColor;
+		private System.Windows.Forms.PictureBox picImage;
+		private System.Windows.Forms.Button btnImageLoad;
+		private System.Windows.Forms.Button btnImageSet;
+		private System.Windows.Forms.OpenFileDialog dlgFile;
 	}
 }
 

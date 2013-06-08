@@ -12,11 +12,13 @@ LogiLCD.net is a .NET wrapper for the Logitech Gaming LCD SDK V1.01. It is writt
 
 Tested Devices:
 ----------------------------------------
-G19 ( UNTESTED )
+G19 ( TESTED )
 G510 ( UNTESTED )
 G13 ( UNTESTED )
 G15 v1 ( UNTESTED )
 G15 v2 ( UNTESTED )
+
+If you have tested the Wrapper with one of the untested deviced please e-mail me your results.
 
 Clarification:
 ----------------------------------------

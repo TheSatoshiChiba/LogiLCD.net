@@ -25,6 +25,8 @@
 
 #region Using Directives
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -77,8 +79,10 @@ namespace dd.logilcd {
 	public class LogiLcd : IDisposable {
 		public const int	MonoWidth	= 160;
 		public const int	MonoHeight	= 43;
+		public const int	MonoBpp		= 8;
 		public const int	ColorWidth	= 320;
 		public const int	ColorHeight	= 240;
+		public const int	ColorBpp	= 32;
 
 		private bool		isInitialized	= false;
 		private bool		isDisposed		= false;
@@ -266,6 +270,118 @@ namespace dd.logilcd {
 			b = Math.Max( 0, Math.Min( b, 255 ) );
 			int i = ( int )line;
 			return NativeMethods.LogiLcdColorSetText( i, text, r, g, b );
+		}
+
+		/// <summary>
+		/// Sets the Background of the Mono LCD to a specific bitmap.
+		/// The bitmap will be converted to a 160x43x8 image.
+		/// </summary>
+		/// <param name="bitmap">The bitmap we want to use as background</param>
+		/// <returns>true if the background could be set</returns>
+		public bool SetMonoBackground( Bitmap bitmap ) {
+			if ( isDisposed ) {
+				throw new ObjectDisposedException( "LogiLcd" );
+			}
+
+			if ( !isInitialized ) {
+				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
+			}
+
+			bool result = false;
+			using ( Bitmap bmp = new Bitmap( MonoWidth, MonoHeight, PixelFormat.Format8bppIndexed ) ) {
+				using ( Graphics gfx = Graphics.FromImage( bmp ) ) {
+					gfx.DrawImage( bitmap, 0.0f, 0.0f, ( float )MonoWidth, ( float )MonoHeight );
+				}
+
+				using ( MemoryStream mem = new MemoryStream() ) {
+					bmp.Save( mem, ImageFormat.Bmp );
+					mem.Close();
+					var		data	= mem.ToArray();
+					IntPtr	p		= Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+					Marshal.Copy( data, 0, p, data.Length );
+					result = NativeMethods.LogiLcdMonoSetBackground( p );
+					Marshal.FreeHGlobal( p );
+				}
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// Sets the Background of the Mono LCD to a specific byte array.
+		/// The data needs to be a 160x43x8 Bitmap.
+		/// </summary>
+		/// <param name="data">The 160x43x8 Bitmap data as array</param>
+		/// <returns>true if the background could be set</returns>
+		public bool SetMonoBackground( byte[] data ) {
+			if ( isDisposed ) {
+				throw new ObjectDisposedException( "LogiLcd" );
+			}
+
+			if ( !isInitialized ) {
+				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
+			}
+
+			IntPtr p = Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+			Marshal.Copy( data, 0, p, data.Length );
+			bool result = NativeMethods.LogiLcdMonoSetBackground( p );
+			Marshal.FreeHGlobal( p );
+			return result;
+		}
+
+		/// <summary>
+		/// Sets the Background of the Color LCD to a specific bitmap.
+		/// The bitmap will be converted to a 320x240x32 image.
+		/// </summary>
+		/// <param name="bitmap">The bitmap we want to use as background</param>
+		/// <returns>true if the background could be set</returns>
+		public bool SetColorBackground( Bitmap bitmap ) {
+			if ( isDisposed ) {
+				throw new ObjectDisposedException( "LogiLcd" );
+			}
+
+			if ( !isInitialized ) {
+				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
+			}
+
+			bool result = false;
+			using( Bitmap bmp = new Bitmap( ColorWidth, ColorHeight, PixelFormat.Format32bppArgb ) ) {
+				using ( Graphics gfx = Graphics.FromImage( bmp ) ) {
+					gfx.DrawImage( bitmap, 0.0f, 0.0f, ( float )ColorWidth, ( float )ColorHeight );
+				}
+
+				using ( MemoryStream mem = new MemoryStream() ) {
+					bmp.Save( mem, ImageFormat.Bmp );
+					mem.Close();
+					var		data	= mem.ToArray();
+					IntPtr	p		= Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+					Marshal.Copy( data, 0, p, data.Length );
+					result = NativeMethods.LogiLcdColorSetBackground( p );
+					Marshal.FreeHGlobal( p );
+				}
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// Sets the Background of the Color LCD to a specific byte array.
+		/// The data needs to be a 320x240x32 Bitmap.
+		/// </summary>
+		/// <param name="data">The 320x240x32 Bitmap data as array</param>
+		/// <returns>true if the background could be set</returns>
+		public bool SetColorBackground( byte[] data ) {
+			if ( isDisposed ) {
+				throw new ObjectDisposedException( "LogiLcd" );
+			}
+
+			if ( !isInitialized ) {
+				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
+			}
+
+			IntPtr p = Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+			Marshal.Copy( data, 0, p, data.Length );
+			bool result = NativeMethods.LogiLcdColorSetBackground( p );
+			Marshal.FreeHGlobal( p );
+			return result;
 		}
 
 		/// <summary>

@@ -83,7 +83,7 @@ namespace WinFormsSample {
 		}
 
 		private void btnInit_Click( object sender, EventArgs e ) {
-			if ( !logilcd.Initialize( "My Sample Applet", LCD_TYPE.MONO ) ) {
+			if ( !logilcd.Initialize( "My Sample Applet", LCD_TYPE.MONO | LCD_TYPE.COLOR ) ) {
 				MessageBox.Show( "Couldn't init Logi LCD :(", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 				logilcd.Shutdown();
 			} else {
@@ -128,6 +128,25 @@ namespace WinFormsSample {
 				logilcd.SetColorText( ( COLOR_TEXT_LINE )index, txtText.Text, txtColor.R, txtColor.G, txtColor.B );
 			}
 			txtText.Text = "";
+		}
+
+		private void btnImageLoad_Click( object sender, EventArgs e ) {
+			dlgFile.InitialDirectory = Environment.GetFolderPath( Environment.SpecialFolder.MyPictures );
+			if ( dlgFile.ShowDialog() == DialogResult.OK ) {
+				picImage.Load( dlgFile.FileName );
+			}
+		}
+
+		private void btnImageSet_Click( object sender, EventArgs e ) {
+			if ( logilcd.IsConnected( LCD_TYPE.MONO ) ) {
+				var bmp = new Bitmap( picImage.Image );
+				logilcd.SetMonoBackground( bmp );
+			}
+
+			if ( logilcd.IsConnected( LCD_TYPE.COLOR ) ) {
+				var bmp = new Bitmap( picImage.Image );
+				logilcd.SetColorBackground( bmp );
+			}
 		}
 	}
 }

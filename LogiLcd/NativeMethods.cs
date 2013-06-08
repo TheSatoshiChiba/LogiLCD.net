@@ -52,16 +52,16 @@ namespace dd.logilcd {
 		public static extern void LogiLcdShutdown();
 
 		// Monochrome LCD functions
-		//[ DllImport( "LogitechLcd.dll" ) ]
-		//static extern bool LogiLcdMonoSetBackground(BYTE monoBitmap[]);
+		[ DllImport( "LogitechLcd.dll", CallingConvention = CallingConvention.Cdecl ) ]
+		public static extern bool LogiLcdMonoSetBackground( IntPtr monoBitmap );
 
 		[DllImport( "LogitechLcd.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl )]
 		[return: MarshalAs( UnmanagedType.I1 )]
 		public static extern bool LogiLcdMonoSetText( int lineNumber, [MarshalAs( UnmanagedType.LPWStr )] string text );
 
 		// Color LCD functions
-		//[ DllImport( "LogitechLcd.dll" ) ]
-		//static extern bool LogiLcdColorSetBackground(BYTE colorBitmap[]);
+		[ DllImport( "LogitechLcd.dll", CallingConvention = CallingConvention.Cdecl ) ]
+		public static extern bool LogiLcdColorSetBackground( IntPtr colorBitmap );
 
 		[DllImport( "LogitechLcd.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl )]
 		[return: MarshalAs( UnmanagedType.I1 )]
