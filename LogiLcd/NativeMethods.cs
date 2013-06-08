@@ -55,18 +55,21 @@ namespace dd.logilcd {
 		//[ DllImport( "LogitechLcd.dll" ) ]
 		//static extern bool LogiLcdMonoSetBackground(BYTE monoBitmap[]);
 
-		//[ DllImport( "LogitechLcd.dll" ) ]
-		//static extern bool LogiLcdMonoSetText(int lineNumber, wchar_t* text);
+		[DllImport( "LogitechLcd.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		public static extern bool LogiLcdMonoSetText( int lineNumber, [MarshalAs( UnmanagedType.LPWStr )] string text );
 
 		// Color LCD functions
 		//[ DllImport( "LogitechLcd.dll" ) ]
 		//static extern bool LogiLcdColorSetBackground(BYTE colorBitmap[]);
 
-		//[ DllImport( "LogitechLcd.dll" ) ]
-		//static extern bool LogiLcdColorSetTitle(wchar_t* text, int red = 255, int green = 255, int blue = 255);
+		[DllImport( "LogitechLcd.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		public static extern bool LogiLcdColorSetTitle( [MarshalAs( UnmanagedType.LPWStr )] string text, int red, int green, int blue );
 
-		//[ DllImport( "LogitechLcd.dll" ) ]
-		//static extern bool LogiLcdColorSetText(int lineNumber, wchar_t* text, int red = 255, int green = 255, int blue = 255);
+		[DllImport( "LogitechLcd.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		public static extern bool LogiLcdColorSetText( int lineNumber, [MarshalAs( UnmanagedType.LPWStr )] string text, int red, int green, int blue );
 
 		//UDK functions, use this only if working with UDK
 		//[ DllImport( "LogitechLcd.dll" ) ]

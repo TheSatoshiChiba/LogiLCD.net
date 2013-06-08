@@ -41,6 +41,16 @@
 			this.chkBtnDown = new System.Windows.Forms.CheckBox();
 			this.chkBtnOk = new System.Windows.Forms.CheckBox();
 			this.chkBtnCancel = new System.Windows.Forms.CheckBox();
+			this.txtText = new System.Windows.Forms.TextBox();
+			this.btnSetText = new System.Windows.Forms.Button();
+			this.btnSetTitle = new System.Windows.Forms.Button();
+			this.chkMonoLine = new System.Windows.Forms.CheckedListBox();
+			this.chkColorLine = new System.Windows.Forms.CheckedListBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.dlgColor = new System.Windows.Forms.ColorDialog();
+			this.lblColor = new System.Windows.Forms.Label();
+			this.btnColor = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// timerUpdate
@@ -218,11 +228,117 @@
 			this.chkBtnCancel.Text = "Color Button Cancel";
 			this.chkBtnCancel.UseVisualStyleBackColor = true;
 			// 
+			// txtText
+			// 
+			this.txtText.Location = new System.Drawing.Point(8, 268);
+			this.txtText.Name = "txtText";
+			this.txtText.Size = new System.Drawing.Size(241, 20);
+			this.txtText.TabIndex = 16;
+			// 
+			// btnSetText
+			// 
+			this.btnSetText.Location = new System.Drawing.Point(255, 266);
+			this.btnSetText.Name = "btnSetText";
+			this.btnSetText.Size = new System.Drawing.Size(100, 23);
+			this.btnSetText.TabIndex = 17;
+			this.btnSetText.Text = "Set Text";
+			this.btnSetText.UseVisualStyleBackColor = true;
+			this.btnSetText.Click += new System.EventHandler(this.btnSetText_Click);
+			// 
+			// btnSetTitle
+			// 
+			this.btnSetTitle.Location = new System.Drawing.Point(360, 266);
+			this.btnSetTitle.Name = "btnSetTitle";
+			this.btnSetTitle.Size = new System.Drawing.Size(100, 23);
+			this.btnSetTitle.TabIndex = 18;
+			this.btnSetTitle.Text = "Set Title";
+			this.btnSetTitle.UseVisualStyleBackColor = true;
+			this.btnSetTitle.Click += new System.EventHandler(this.btnSetTitle_Click);
+			// 
+			// chkMonoLine
+			// 
+			this.chkMonoLine.FormattingEnabled = true;
+			this.chkMonoLine.Items.AddRange(new object[] {
+            "Line 0",
+            "Line 1",
+            "Line 2",
+            "Line 3"});
+			this.chkMonoLine.Location = new System.Drawing.Point(8, 311);
+			this.chkMonoLine.Name = "chkMonoLine";
+			this.chkMonoLine.Size = new System.Drawing.Size(115, 139);
+			this.chkMonoLine.TabIndex = 19;
+			// 
+			// chkColorLine
+			// 
+			this.chkColorLine.FormattingEnabled = true;
+			this.chkColorLine.Items.AddRange(new object[] {
+            "Line 0",
+            "Line 1",
+            "Line 2",
+            "Line 3",
+            "Line 4",
+            "Line 5",
+            "Line 6",
+            "Line 7"});
+			this.chkColorLine.Location = new System.Drawing.Point(129, 311);
+			this.chkColorLine.Name = "chkColorLine";
+			this.chkColorLine.Size = new System.Drawing.Size(120, 139);
+			this.chkColorLine.TabIndex = 20;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(8, 295);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(65, 13);
+			this.label2.TabIndex = 21;
+			this.label2.Text = "Mono Lines:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(126, 295);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(62, 13);
+			this.label3.TabIndex = 22;
+			this.label3.Text = "Color Lines:";
+			// 
+			// dlgColor
+			// 
+			this.dlgColor.Color = System.Drawing.Color.White;
+			// 
+			// lblColor
+			// 
+			this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblColor.Location = new System.Drawing.Point(255, 311);
+			this.lblColor.Name = "lblColor";
+			this.lblColor.Size = new System.Drawing.Size(99, 18);
+			this.lblColor.TabIndex = 23;
+			// 
+			// btnColor
+			// 
+			this.btnColor.Location = new System.Drawing.Point(360, 308);
+			this.btnColor.Name = "btnColor";
+			this.btnColor.Size = new System.Drawing.Size(100, 21);
+			this.btnColor.TabIndex = 24;
+			this.btnColor.Text = "Pick Color";
+			this.btnColor.UseVisualStyleBackColor = true;
+			this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(472, 260);
+			this.ClientSize = new System.Drawing.Size(472, 471);
+			this.Controls.Add(this.btnColor);
+			this.Controls.Add(this.lblColor);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.chkColorLine);
+			this.Controls.Add(this.chkMonoLine);
+			this.Controls.Add(this.btnSetTitle);
+			this.Controls.Add(this.btnSetText);
+			this.Controls.Add(this.txtText);
 			this.Controls.Add(this.chkBtnCancel);
 			this.Controls.Add(this.chkBtnOk);
 			this.Controls.Add(this.chkBtnDown);
@@ -268,6 +384,16 @@
 		private System.Windows.Forms.CheckBox chkBtnDown;
 		private System.Windows.Forms.CheckBox chkBtnOk;
 		private System.Windows.Forms.CheckBox chkBtnCancel;
+		private System.Windows.Forms.TextBox txtText;
+		private System.Windows.Forms.Button btnSetText;
+		private System.Windows.Forms.Button btnSetTitle;
+		private System.Windows.Forms.CheckedListBox chkMonoLine;
+		private System.Windows.Forms.CheckedListBox chkColorLine;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ColorDialog dlgColor;
+		private System.Windows.Forms.Label lblColor;
+		private System.Windows.Forms.Button btnColor;
 	}
 }
 

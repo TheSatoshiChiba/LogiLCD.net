@@ -39,8 +39,9 @@ using dd.logilcd;
 
 namespace WinFormsSample {
 	public partial class frmMain : Form {
-		private LogiLcd logilcd = new LogiLcd();
-		
+		private LogiLcd logilcd		= new LogiLcd();
+		private Color	txtColor	= Color.White;
+
 		public frmMain() {
 			InitializeComponent();
 		}
@@ -49,6 +50,7 @@ namespace WinFormsSample {
 			lblStatus.Text		= "[ NULL ]";
 			btnShutdown.Enabled = false;
 			btnInit.Enabled		= true;
+			lblColor.BackColor	= txtColor;
 		}
 
 		private void timerUpdate_Tick( object sender, EventArgs e ) {
@@ -81,7 +83,7 @@ namespace WinFormsSample {
 		}
 
 		private void btnInit_Click( object sender, EventArgs e ) {
-			if ( !logilcd.Init( "My Sample Applet", LCD_TYPE.MONO ) ) {
+			if ( !logilcd.Initialize( "My Sample Applet", LCD_TYPE.MONO ) ) {
 				MessageBox.Show( "Couldn't init Logi LCD :(", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 				logilcd.Shutdown();
 			} else {
@@ -99,6 +101,33 @@ namespace WinFormsSample {
 			timerUpdate.Stop();
 			logilcd.Shutdown();
 			lblStatus.Text = "[ NULL ]";
+		}
+
+		private void btnColor_Click( object sender, EventArgs e ) {
+			dlgColor.Color = txtColor;
+			if ( dlgColor.ShowDialog() == DialogResult.OK ) {
+				txtColor = dlgColor.Color;
+				lblColor.BackColor = txtColor;
+			}
+		}
+
+		private void btnSetTitle_Click( object sender, EventArgs e ) {
+			logilcd.SetColorTitle( txtText.Text, txtColor.R, txtColor.G, txtColor.B );
+			txtText.Text = "";
+		}
+
+		private void btnSetText_Click( object sender, EventArgs e ) {
+			int index = 0;
+			foreach ( var chk in chkMonoLine.CheckedItems ) {
+				index = chkMonoLine.Items.IndexOf( chk );
+				logilcd.SetMonoText( ( MONO_TEXT_LINE )index, txtText.Text );
+			}
+
+			foreach ( var chk in chkColorLine.CheckedItems ) {
+				index = chkColorLine.Items.IndexOf( chk );
+				logilcd.SetColorText( ( COLOR_TEXT_LINE )index, txtText.Text, txtColor.R, txtColor.G, txtColor.B );
+			}
+			txtText.Text = "";
 		}
 	}
 }
