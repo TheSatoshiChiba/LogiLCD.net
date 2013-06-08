@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogiLcd", "LogiLcd\LogiLcd.csproj", "{CC9836EE-9948-483E-8887-429E4FFC5C93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC36D942-3ECD-4D77-9347-970E08869B73}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsSample", "WinFormsSample\WinFormsSample.csproj", "{F5446F0B-9D25-47D3-9ED3-CB6FBD4EE270}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC9836EE-9948-483E-8887-429E4FFC5C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9836EE-9948-483E-8887-429E4FFC5C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9836EE-9948-483E-8887-429E4FFC5C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9836EE-9948-483E-8887-429E4FFC5C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5446F0B-9D25-47D3-9ED3-CB6FBD4EE270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5446F0B-9D25-47D3-9ED3-CB6FBD4EE270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5446F0B-9D25-47D3-9ED3-CB6FBD4EE270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5446F0B-9D25-47D3-9ED3-CB6FBD4EE270}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
