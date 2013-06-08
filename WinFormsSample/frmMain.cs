@@ -138,15 +138,15 @@ namespace WinFormsSample {
 		}
 
 		private void btnImageSet_Click( object sender, EventArgs e ) {
-			if ( logilcd.IsConnected( LCD_TYPE.MONO ) ) {
-				var bmp = new Bitmap( picImage.Image );
-				logilcd.SetMonoBackground( bmp );
-			}
+			//if ( logilcd.IsConnected( LCD_TYPE.MONO ) ) {
+			//	var bmp = new Bitmap( picImage.Image );
+			//	logilcd.SetMonoBackground( bmp );
+			//}
 
-			if ( logilcd.IsConnected( LCD_TYPE.COLOR ) ) {
+			//if ( logilcd.IsConnected( LCD_TYPE.COLOR ) ) {
 				var bmp = new Bitmap( picImage.Image );
 				logilcd.SetColorBackground( bmp );
-			}
+			//}
 		}
 	}
 }

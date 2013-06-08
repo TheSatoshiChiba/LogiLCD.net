@@ -287,22 +287,23 @@ namespace dd.logilcd {
 				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
 			}
 
+			// TODO: Image conversion not working at the moment
 			bool result = false;
-			using ( Bitmap bmp = new Bitmap( MonoWidth, MonoHeight, PixelFormat.Format8bppIndexed ) ) {
-				using ( Graphics gfx = Graphics.FromImage( bmp ) ) {
-					gfx.DrawImage( bitmap, 0.0f, 0.0f, ( float )MonoWidth, ( float )MonoHeight );
-				}
+			//using ( Bitmap bmp = new Bitmap( MonoWidth, MonoHeight, PixelFormat.Format8bppIndexed ) ) {
+			//	using ( Graphics gfx = Graphics.FromImage( bmp ) ) {
+			//		gfx.DrawImage( bitmap, 0.0f, 0.0f, ( float )MonoWidth, ( float )MonoHeight );
+			//	}
 
-				using ( MemoryStream mem = new MemoryStream() ) {
-					bmp.Save( mem, ImageFormat.Bmp );
-					mem.Close();
-					var		data	= mem.ToArray();
-					IntPtr	p		= Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
-					Marshal.Copy( data, 0, p, data.Length );
-					result = NativeMethods.LogiLcdMonoSetBackground( p );
-					Marshal.FreeHGlobal( p );
-				}
-			}
+			//	using ( MemoryStream mem = new MemoryStream() ) {
+			//		bmp.Save( mem, ImageFormat.Bmp );
+			//		mem.Close();
+			//		var		data	= mem.ToArray();
+			//		IntPtr	p		= Marshal.AllocHGlobal( data.length );
+			//		Marshal.Copy( data, 0, p, data.Length );
+			//		result = NativeMethods.LogiLcdMonoSetBackground( p );
+			//		Marshal.FreeHGlobal( p );
+			//	}
+			//}
 			return result;
 		}
 
@@ -321,7 +322,7 @@ namespace dd.logilcd {
 				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
 			}
 
-			IntPtr p = Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+			IntPtr p = Marshal.AllocHGlobal( data.Length );
 			Marshal.Copy( data, 0, p, data.Length );
 			bool result = NativeMethods.LogiLcdMonoSetBackground( p );
 			Marshal.FreeHGlobal( p );
@@ -353,7 +354,7 @@ namespace dd.logilcd {
 					bmp.Save( mem, ImageFormat.Bmp );
 					mem.Close();
 					var		data	= mem.ToArray();
-					IntPtr	p		= Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+					IntPtr	p		= Marshal.AllocHGlobal( data.Length );
 					Marshal.Copy( data, 0, p, data.Length );
 					result = NativeMethods.LogiLcdColorSetBackground( p );
 					Marshal.FreeHGlobal( p );
@@ -377,7 +378,7 @@ namespace dd.logilcd {
 				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
 			}
 
-			IntPtr p = Marshal.AllocHGlobal( Marshal.SizeOf( data ) );
+			IntPtr p = Marshal.AllocHGlobal( data.Length );
 			Marshal.Copy( data, 0, p, data.Length );
 			bool result = NativeMethods.LogiLcdColorSetBackground( p );
 			Marshal.FreeHGlobal( p );
