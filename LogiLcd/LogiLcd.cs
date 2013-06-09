@@ -30,6 +30,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Linq;
 #endregion
 
 namespace dd.logilcd {
@@ -322,8 +323,8 @@ namespace dd.logilcd {
 				throw new InvalidOperationException( "You have to call LogiLcd.Initialize() first." );
 			}
 
-			IntPtr p = Marshal.AllocHGlobal( data.Length );
-			Marshal.Copy( data, 0, p, data.Length );
+			IntPtr p = Marshal.AllocHGlobal( data.Length - 54 );
+			Marshal.Copy( data, 54, p, data.Length );
 			bool result = NativeMethods.LogiLcdMonoSetBackground( p );
 			Marshal.FreeHGlobal( p );
 			return result;
@@ -354,8 +355,8 @@ namespace dd.logilcd {
 					bmp.Save( mem, ImageFormat.Bmp );
 					mem.Close();
 					var		data	= mem.ToArray();
-					IntPtr	p		= Marshal.AllocHGlobal( data.Length );
-					Marshal.Copy( data, 0, p, data.Length );
+					IntPtr	p		= Marshal.AllocHGlobal( data.Length - 54 );
+					Marshal.Copy( data, 54, p, data.Length );
 					result = NativeMethods.LogiLcdColorSetBackground( p );
 					Marshal.FreeHGlobal( p );
 				}
