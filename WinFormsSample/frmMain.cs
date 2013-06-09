@@ -143,10 +143,10 @@ namespace WinFormsSample {
 			//	logilcd.SetMonoBackground( bmp );
 			//}
 
-			//if ( logilcd.IsConnected( LCD_TYPE.COLOR ) ) {
+			if ( logilcd.IsConnected( LCD_TYPE.COLOR ) ) {
 				var bmp = new Bitmap( picImage.Image );
 				logilcd.SetColorBackground( bmp );
-			//}
+			}
 		}
 	}
 }
