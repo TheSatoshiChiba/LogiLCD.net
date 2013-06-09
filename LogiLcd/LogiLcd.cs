@@ -353,7 +353,7 @@ namespace dd.logilcd {
 				}
 				bmp.RotateFlip( RotateFlipType.Rotate180FlipX );
 				using ( MemoryStream mem = new MemoryStream() ) {
-					bmp.Save( mem, ImageFormat.MemoryBmp );
+					bmp.Save( mem, ImageFormat.Bmp );
 					mem.Close();
 					var		data	= mem.ToArray();
 					IntPtr	p		= Marshal.AllocHGlobal( data.Length - 54 );
