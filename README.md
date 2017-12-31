@@ -12,8 +12,6 @@ Supported Devices
 * G15 v1 ( UNTESTED )
 * G15 v2 ( UNTESTED )
 
-If you have tested the wrapper with one of the untested devices please e-mail me your results.
-
 Clarification
 -------------
 
